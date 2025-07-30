@@ -22,7 +22,7 @@ Za rješavanje zadatka radićemo transfer learning sljedećih CNN arhitektura:
 - MobileNet
 - EfficientNet
 
-Pored toga, implementiraćemo i jednostavnu CNN mrežu koja će služiti kao baseline za poređenje.
+Pored toga, implementiraćemo i jednostavnu CNN mrežu koju ćemo trenirati od nule i koja će služiti kao baseline za poređenje.
 
 ### Evaluacija:
 
