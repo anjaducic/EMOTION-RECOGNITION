@@ -1,0 +1,26 @@
+U radu:
+
+Oni su uzeli klasični VGG19 (19 slojeva: 16 konvolucijskih + 3 FC) i modifikovali ga da bolje radi na FER2013 i CK+ datasetima, jer je običan VGG19 sklon overfittingu i previše težak za male datasete.
+“Improved VGG19” = verzija sa unapređenjima:
+
+Unutar svakog bloka:
+
+Conv sloj (za osobine)
+
+BatchNorm (ubrzava treniranje, stabilizuje)
+
+ReLU (nelinearnost)
+
+Average pooling (umesto MaxPooling, da uhvati globalnije feature-e)
+
+Dropout
+
+Između poslednjeg convolution sloja i FC sloja → smanjuje overfitting.
+
+Fully Connected slojevi
+
+Umesto 3 teška FC sloja iz originalnog VGG19, oni koriste samo 2 FC sloja + softmax → lakši, stabilniji, manje parametara.
+
+Loss funkcija
+
+Koriste cross-entropy + softmax (bolja za multi-class, otpornija na noisy labels) umesto klasične MSE.
