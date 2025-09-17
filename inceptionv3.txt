@@ -1,0 +1,7 @@
+accuracy oko 0.34, precision 0.45, recall < 0.1 - kada radim samo transfer learning, sa 1 dense slojem od 128 neurona, batch size 128, dim slike 75*75, zaustavi se posle 18 epoha (stari kod-bez oversamplinga)
+
+sa poboljsanim modelom i OS, resizom, batch size 128, dim 130*130 odradio svih 40 epoha, poboljsane metrike, accuracy oko 0.425, precision 0.7, recall oko 0.18, uslikano: (prije fine tuninga):
+
+posle fine tuninga presao jos 15 fine tuning epoha do kraja:
+
+dalje, popravljen model prema savjetima iz rada
