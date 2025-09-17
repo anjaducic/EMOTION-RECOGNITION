@@ -3,5 +3,117 @@ accuracy oko 0.34, precision 0.45, recall < 0.1 - kada radim samo transfer learn
 sa poboljsanim modelom i OS, resizom, batch size 128, dim 130*130 odradio svih 40 epoha, poboljsane metrike, accuracy oko 0.425, precision 0.7, recall oko 0.18, uslikano: (prije fine tuninga):
 
 posle fine tuninga presao jos 15 fine tuning epoha do kraja:
+Restoring model weights from the end of the best epoch: 53.
+56/56 ━━━━━━━━━━━━━━━━━━━━ 122s 2s/step - accuracy: 0.5512 - auc: 0.8794 - loss: 1.1992 - precision: 0.6887 - recall: 0.4026
+Test results (loss, accuracy, precision, recall, AUC): [1.1991907358169556, 0.5512312650680542, 0.6886952519416809, 0.40263232588768005, 0.8794485330581665]
+56/56 ━━━━━━━━━━━━━━━━━━━━ 120s 2s/step
+F1 score: 0.5445888470624602
+              precision    recall  f1-score   support
 
-dalje, popravljen model prema savjetima iz rada
+           0     0.4808    0.3135    0.3796       960
+           1     0.3795    0.6667    0.4837       111
+           2     0.4158    0.3517    0.3811      1018
+           3     0.7286    0.7885    0.7574      1825
+           4     0.4911    0.5674    0.5265      1216
+           5     0.4353    0.4697    0.4519      1139
+           6     0.6426    0.6248    0.6336       797
+
+    accuracy                         0.5512      7066
+   macro avg     0.5105    0.5403    0.5162      7066
+weighted avg     0.5465    0.5512    0.5446      7066
+
+
+
+dalje, popravljen model prema savjetima iz rada, data_augmentation = tf.keras.Sequential([
+    layers.RandomFlip("horizontal"),
+    layers.RandomRotation(0.15),
+    layers.RandomTranslation(0.15, 0.15),
+    layers.RandomZoom(0.15)
+])
+
+# Build InceptionV3 model
+inception_base = InceptionV3(include_top=False, weights='imagenet', input_shape=(img_height, img_width, 3))
+for layer in inception_base.layers:
+    layer.trainable = False
+
+inputs = layers.Input(shape=(img_height, img_width, 3))
+x = data_augmentation(inputs)
+x = inception_base(x, training=False)
+x = layers.GlobalAveragePooling2D()(x)
+#x = layers.Flatten()(x) 
+x = layers.Dense(128, activation='relu')(x)
+x = layers.BatchNormalization()(x)
+x = layers.Dropout(0.1)(x)
+x = layers.Dense(128, activation='relu')(x)
+x = layers.BatchNormalization()(x)
+x = layers.Dropout(0.1)(x)
+#x = layers.Dropout(0.2)(x)
+outputs = layers.Dense(num_classes, activation='softmax')(x)
+sa rezultatima
+posle fine tuninga:
+
+=== Eval results (from model.evaluate - loss, accuracy, precision, recall, AUC) ===
+[1.1672817468643188, 0.5665156841278076, 0.689180314540863, 0.44622135162353516, 0.8870773315429688]
+
+=== Global metrics ===
+Accuracy: 0.5665
+Macro Precision: 0.5364
+Weighted Precision: 0.5575
+Macro Recall: 0.5566
+Weighted Recall: 0.5665
+Macro F1: 0.5406
+Weighted F1: 0.5575
+AUC (OVR): 0.8669
+
+=== Per-class metrics ===
+              precision    recall  f1-score   support
+
+           0     0.4691    0.4115    0.4384       960
+           1     0.4902    0.6757    0.5682       111
+           2     0.4679    0.3075    0.3711      1018
+           3     0.7204    0.8060    0.7608      1825
+           4     0.4902    0.5970    0.5384      1216
+           5     0.4585    0.4320    0.4448      1139
+           6     0.6588    0.6662    0.6625       797
+
+    accuracy                         0.5665      7066
+   macro avg     0.5364    0.5566    0.5406      7066
+weighted avg     0.5575    0.5665    0.5575      7066
+
+nije velika razlika, a mnogo vise epoha izvrseno, vratiti na ovo: learning_rate = 5e-4
+epochs = 40
+
+# Data augmentation 
+data_augmentation = tf.keras.Sequential([
+    layers.RandomFlip("horizontal"),
+    layers.RandomRotation(0.15),
+    layers.RandomTranslation(0.15, 0.15),
+    layers.RandomZoom(0.15)
+])
+
+# Build InceptionV3 model
+inception_base = InceptionV3(include_top=False, weights='imagenet', input_shape=(img_height, img_width, 3))
+for layer in inception_base.layers:
+    layer.trainable = False
+
+inputs = layers.Input(shape=(img_height, img_width, 3))
+x = data_augmentation(inputs)
+x = inception_base(x, training=False)
+x = layers.GlobalAveragePooling2D()(x)
+x = layers.Dense(128, activation='relu')(x)
+x = layers.BatchNormalization()(x)
+x = layers.Dropout(0.2)(x)
+outputs = layers.Dense(num_classes, activation='softmax')(x)
+
+model = models.Model(inputs, outputs)
+model.compile(
+    optimizer=optimizers.Adam(learning_rate=learning_rate),
+    loss='categorical_crossentropy',
+    metrics=[
+        'accuracy',
+        metrics.Precision(name='precision'),
+        metrics.Recall(name='recall'),
+        metrics.AUC(name='auc')
+    ]
+)
+
