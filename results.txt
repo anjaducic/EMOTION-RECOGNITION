@@ -114,3 +114,39 @@ Accuracy: 0.349, Precision: 0.707, Recall: 0.026, AUC: 0.737
     accuracy                           0.34      7066
    macro avg       0.27      0.27      0.27      7066
 weighted avg       0.32      0.34      0.32      7066
+
+
+
+
+
+
+
+
+
+
+
+
+
+BASELINE CNN
+Augmentacija    
+    'fear': 2,
+    'surprise': 2,
+    'angry': 1,
+    'disgust': 1
+learning rate 1e-4
+jedan kanal za boje
+oversampling
+F1 score: 0.5879488170788345
+              precision    recall  f1-score   support
+
+           0     0.4841    0.5083    0.4959       960
+           1     0.4199    0.6847    0.5205       111
+           2     0.4378    0.3664    0.3989      1018
+           3     0.7987    0.8241    0.8112      1825
+           4     0.5180    0.6028    0.5572      1216
+           5     0.4859    0.4074    0.4432      1139
+           6     0.7034    0.6813    0.6922       797
+
+    accuracy                         0.5917      7066
+   macro avg     0.5497    0.5821    0.5599      7066
+weighted avg     0.5885    0.5917    0.5879      7066
