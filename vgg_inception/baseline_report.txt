@@ -1,0 +1,27 @@
+=== Eval results (from model.evaluate - loss, accuracy, precision, recall, AUC) ===
+[1.0234706401824951, 0.6147750020027161, 0.7587628960609436, 0.46872347593307495, 0.9124701023101807]
+
+=== Global metrics ===
+Accuracy: 0.6148
+Macro Precision: 0.5768
+Weighted Precision: 0.6120
+Macro Recall: 0.6061
+Weighted Recall: 0.6148
+Macro F1: 0.5853
+Weighted F1: 0.6103
+AUC (OVR): 0.8932
+
+=== Per-class metrics ===
+              precision    recall  f1-score   support
+
+           0     0.5076    0.4885    0.4979       960
+           1     0.4706    0.7207    0.5694       111
+           2     0.4773    0.3517    0.4050      1018
+           3     0.8282    0.8455    0.8368      1825
+           4     0.5199    0.6431    0.5750      1216
+           5     0.5019    0.4706    0.4857      1139
+           6     0.7319    0.7227    0.7273       797
+
+    accuracy                         0.6148      7066
+   macro avg     0.5768    0.6061    0.5853      7066
+weighted avg     0.6120    0.6148    0.6103      7066
