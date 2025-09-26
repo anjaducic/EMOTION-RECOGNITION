@@ -162,3 +162,9 @@ AUC (OVR): 0.8769
     accuracy                         0.5832      7066
    macro avg     0.5301    0.5733    0.5381      7066
 weighted avg     0.5792    0.5832    0.5773      7066
+
+
+
+dodatnim dotreniravanjem polovine 4. sloja i 5. sloja, val loss nije opadao, stagnirao je, kao i accuracy i auc i recall, precision imala neke razbacane vrijednosti: 15 epoha, batch size 128, adam, LR=5e-6, early_stop = EarlyStopping(monitor='val_loss', patience=5, restore_best_weights=True, verbose=1)
+lr_scheduler = ReduceLROnPlateau(monitor='val_loss', factor=0.5, patience=4, min_lr=1e-7, verbose=1)
+makro f1 bolji bez additional. pogledati u .txt izvjestajima.

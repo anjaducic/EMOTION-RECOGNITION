@@ -117,3 +117,7 @@ model.compile(
     ]
 )
 
+
+kad radim new inception i fine tune, kod fine tuninga dodje do stagniranja negdje kod 20-te epohe, smanjen br fine tune epoha sa 25 na 15,Macro F1: 0.5202
+
+
