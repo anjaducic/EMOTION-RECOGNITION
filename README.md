@@ -11,6 +11,7 @@ Skup podataka koji koristimo sastoji se od **grayscale slika veličine 48×48 pi
 ## Uputstvo za početak
 
 U folderu **`EMOTION-RECOGNITION/`** nalaze se Jupyter Notebook fajlovi sa implementacijama različitih modela:  
+- Notebook **`dataset_analysis.ipynb`** sadrži kratku analizu i prikaz skupa podataka.
 - Posebni notebook-ovi za **ResNet50** i **MobileNetV2** modele, organizovani odvojeno u fajlovima redom **`resnet.ipynb`** i **`mobilenet.ipynb`**. Rezultati za ResNet i MobileNet prikazani su direktno unutar Jupyter notebook fajlova.
 - U podfolderu **`vgg_inception/`** nalazi se **`emotion_recognition.ipynb`** sa **Baseline implementacijama**,  **VGG19** i **InceptionV3** modelima. Svi izveštaji o rezultatima ovih modela modela nalaze se u **`.txt fajlovima`** u okviru foldera **`vgg_inception/`**.
 
@@ -38,6 +39,10 @@ jupyter notebook resnet.ipynb
 ili
 ```bash
 jupyter notebook mobilenet.ipynb
+```
+ili
+```bash
+jupyter notebook datset_analysis.ipynb
 ```
 ili
 ```bash
