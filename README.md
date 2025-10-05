@@ -42,7 +42,7 @@ jupyter notebook mobilenet.ipynb
 ```
 ili
 ```bash
-jupyter notebook datset_analysis.ipynb
+jupyter notebook dataset_analysis.ipynb
 ```
 ili
 ```bash
