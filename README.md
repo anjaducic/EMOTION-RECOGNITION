@@ -1,6 +1,6 @@
-# 🎭 Prepoznavanje emocija na osnovu facijalnih ekspresija primenom konvolucionih neuronskih mreža
+# Prepoznavanje emocija na osnovu facijalnih ekspresija primenom konvolucionih neuronskih mreža
 
-## 🎯 Cilj projekta
+## Cilj projekta
 
 Cilj ovog projekta je razvoj sistema za **automatsko prepoznavanje emocija** na osnovu facijalnih ekspresija prikazanih na slikama.  
 Skup podataka koji koristimo sastoji se od **grayscale slika veličine 48×48 piksela**, pri čemu je svaka slika označena kao jedna od sledećih sedam emocija:  
@@ -8,14 +8,14 @@ Skup podataka koji koristimo sastoji se od **grayscale slika veličine 48×48 pi
 
 ---
 
-## 📎 Uputstvo za početak
+## Uputstvo za početak
 
 U folderu **`EMOTION-RECOGNITION/`** nalaze se Jupyter Notebook fajlovi sa implementacijama različitih modela:  
 - Posebni notebook-ovi za **ResNet50** i **MobileNetV2** modele, organizovani odvojeno u fajlovima redom **`resnet.ipynb`** i **`mobilenet.ipynb`**. Rezultati za ResNet i MobileNet prikazani su direktno unutar Jupyter notebook fajlova.
 - U podfolderu **`vgg_inception/`** nalazi se **`emotion_recognition.ipynb`** sa **Baseline implementacijama**,  **VGG19** i **InceptionV3** modelima. Svi izveštaji o rezultatima ovih modela modela nalaze se u **`.txt fajlovima`** u okviru foldera **`vgg_inception/`**.
 
 
-## 🚀 Instalacija i pokretanje
+## Instalacija i pokretanje
 
 1. Kloniraj repozitorijum:
 
@@ -30,13 +30,22 @@ cd EMOTION-RECOGNITION
   pip install tensorflow keras numpy matplotlib kagglehub scikit-learn seaborn
   ```
 
-3. Pokreni željeni Jupyter notebook, na primer:
+3. Pokreni željeni Jupyter notebook:
 
 ```bash
+jupyter notebook resnet.ipynb
+```
+ili
+```bash
+jupyter notebook mobilenet.ipynb
+```
+ili
+```bash
+cd vgg_inception
 jupyter notebook emotion_recognition.ipynb
 ```
 
-## 🧠 Skup podataka
+## Skup podataka
 
 Za treniranje i evaluaciju modela korišćen je **Face Expression Recognition Dataset**
  sa platforme Kaggle. Dataset je dostupan [ovde](https://www.kaggle.com/datasets/jonathanoheix/face-expression-recognition-dataset/data).
@@ -49,7 +58,7 @@ U okviru skupa postoje train i test podaci, pri čemu se 20% train skupa koristi
 Podaci se automatski preuzimaju tokom izvršavanja koda pomoću biblioteke kagglehub.
 Podaci su pretprocesirani kako bi bili spremni za treniranje i evaluaciju modela.
 
-## 🧩 Modeli i arhitekture
+## Modeli i arhitekture
 
 Za rešavanje zadatka korišćen je transfer learning i fine-tuning sledećih konvolucionih neuronskih mreža:
 - VGG19	
@@ -62,7 +71,7 @@ Pored toga, implementirane su i dve osnovne CNN mreže (baseline modeli) koje se
 - Baseline CNN (RGB) – koristi trokanalne (RGB) slike kao ulaz.
 
 
-## 📊 Metrike evaluacije
+## Metrike evaluacije
 
 Za procenu performansi modela korišćene su sledeće metrike:
 - Tačnost (Accuracy)
@@ -72,7 +81,7 @@ Za procenu performansi modela korišćene su sledeće metrike:
 - AUC skor (Area Under Curve)
 
 
-## 📈 Primer rezultata (Baseline grayscale)
+## Primer rezultata (Baseline grayscale)
 ```txt
 === Eval results (from model.evaluate - loss, accuracy, precision, recall, AUC) ===
 [1.029132604598999, 0.6164732575416565, 0.7502252459526062, 0.47141239047050476, 0.91164630651474]
@@ -105,7 +114,7 @@ weighted avg     0.6175    0.6165    0.6140      7066
 
 
 
-## Tim: 
+## 👭 Tim: 
 - Anja Dučić, E2 15/2024
 - Anja Lovrić, E2 16/2024
 
