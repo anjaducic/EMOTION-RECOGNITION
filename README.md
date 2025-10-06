@@ -1,13 +1,13 @@
 # Prepoznavanje emocija na osnovu facijalnih ekspresija primenom konvolucionih neuronskih mreža
 
-## Cilj projekta
+## Kratak opis
 
 Cilj ovog projekta je razvoj sistema za **automatsko prepoznavanje emocija** na osnovu facijalnih ekspresija prikazanih na slikama.  
 Skup podataka koji koristimo sastoji se od **grayscale slika veličine 48×48 piksela**, pri čemu je svaka slika označena kao jedna od sledećih sedam emocija:  
-**angry**, **disgust**, **fear**, **happy**, **sad**, **surprise** i **neutral**.  
-
+**angry**, **disgust**, **fear**, **happy**, **sad**, **surprise** i **neutral**. 
 
 Za više informacija o projektu, pogledati kompletan [rad](https://github.com/anjaducic/EMOTION-RECOGNITION/blob/main/Naucni%20rad.pdf).
+
 ---
 
 ## Uputstvo za početak
